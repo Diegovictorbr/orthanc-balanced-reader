@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  nginx:
+    build:
+      args:
+        - NGINX_CONF_FILE=nginx.conf
+    ports:
+      - 80:80
+
+  balanced-general-writer:
+    volumes:
+      - balanced-storage:/root/orthanc-storage:Z
+
+  reader-1:
+    volumes:
+      - balanced-storage:/root/orthanc-storage:Z
+  
+  reader-2:
+    volumes:
+      - balanced-storage:/root/orthanc-storage:Z
